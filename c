@@ -131,7 +131,7 @@ class del_cmd(normal_cmd):
     AUTOCLEAN = True
 
     def do(self):
-        if input("Are you sure to remove " + self.count() + ' (y/n)') in ['y', 'Y', 'yes']:
+        if input("Are you sure to remove " + self.count() + ' files (y/n)') in ['y', 'Y', 'yes']:
             from send2trash import send2trash
             for item in itertools.chain(self.storage.files, self.storage.dirs):
                 self.output(C.OKGREEN, 'move to trash ' + item)
@@ -215,19 +215,26 @@ class vx_cmd_proto(normal_cmd):
 
     def vname(self, x, topath=os.getcwd()):
         name = os.path.basename(x)
+        overwrite = False
         if os.path.exists(os.path.join(topath, name)):
-            self.output(C.WARNING, 'File ' + name + ' exists. Rename?')
-            newname = input('Old name `' + C.OKGREEN + name + C.ENDC + "', new name? ")
+            self.output(C.WARNING, 'File ' + name + ' exists.')
+            try:
+                newname = input('Old name `' + C.OKGREEN + name + C.ENDC + "', new name?\n>> ")
+            except KeyboardInterrupt:
+                newname = False
             if not newname:
-                raise Exception('Abort.')
+                raise Exception('\nAbort.')
             if newname.startswith('*'):
                 newname = name + newname[1:]
-            if os.path.exists(os.path.join(topath, newname)):
+            elif newname.startswith('!'):
+                newname = name
+                overwrite = True
+            if os.path.exists(os.path.join(topath, newname)) and not overwrite:
                 raise Exception('Name `' + newname + "' exists.")
         else:
             newname = name
         newname = os.path.join(topath, newname)
-        return newname
+        return (newname, overwrite)
 
 
 class v_cmd(vx_cmd_proto):
@@ -241,9 +248,15 @@ class v_cmd(vx_cmd_proto):
         for curpath in self.args:
             self.output(C.HEADER, 'Copying to `' + curpath + "'")
             for x in self.storage.dirs:
-                newname = self.vname(x, curpath)
-                self.output(C.OKBLUE, 'D ' + x + ' -> ' + newname)
-                shutil.copytree(x, newname, symlinks=True)
+                newname, overwrite = self.vname(x, curpath)
+                if not overwrite:
+                    self.output(C.OKBLUE, 'D ' + x + ' -> ' + newname)
+                    shutil.copytree(x, newname, symlinks=True)
+                else:
+                    self.output(C.WARNING, 'D ' + x + ' -> ' + newname + ' overwrite')
+                    suffix = '.bak.bak.bak'
+                    shutil.copytree(x, newname + suffix, symlinks=True)
+                    shutil.rmtree(newname)
             for x in self.storage.files:
                 newname = self.vname(x, curpath)
                 self.output(C.OKGREEN, '. ' + x + ' -> ' + newname)
