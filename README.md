@@ -14,7 +14,7 @@ So, I am worried and once upon a time I said: "Enough". And so was `C` born.
 
 `C` is a small Python3 script which trying to imitate `ctrl` or `cmd` key for files operation. How it works? It's simply like this:
 
-```
+```shell
 $ cd /etc
 $ c c passwd
 +. /etc/passwd
@@ -35,7 +35,7 @@ Copying to `/home/bobuk/backup'
 
 Here `c c` is a analogue for `ctrl+c` and `c v` for `ctrl+v`. Looks like a crap? **Yes!** But with nifty aliases it's can be a much easier. You can use your favorite `ctrl+commands` as a shell commands.
 
-```
+```shell
 $ ls
 README.md   TODO.todo   c       install.sh
 $ cmd+c README.md install.sh
@@ -62,7 +62,7 @@ In this case I use `cmd+commands` because installation script recognize what it 
 
 ### Commands
 
-```
+```shell
 $ cmd+h
 List of commands:
     cmd+c mark files and directories for copying or moving
