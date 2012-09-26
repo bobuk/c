@@ -134,7 +134,10 @@ class del_cmd(normal_cmd):
 
     def do(self):
         if input("Are you sure to remove " + self.count() + ' files (y/n)') in ['y', 'Y', 'yes']:
-            from send2trash import send2trash
+            try:
+                from send2trash import send2trash
+            except:
+                send2trash = shutil.rmtree
             for item in itertools.chain(self.storage.files, self.storage.dirs):
                 self.output(C.OKGREEN, 'move to trash ' + item)
                 send2trash(item)
