@@ -260,9 +260,13 @@ class v_cmd(vx_cmd_proto):
                     shutil.copytree(x, newname + suffix, symlinks=True)
                     shutil.rmtree(newname)
             for x in self.storage.files:
-                newname = self.vname(x, curpath)
-                self.output(C.OKGREEN, '. ' + x + ' -> ' + newname)
-                shutil.copy2(x, newname)
+                newname, overwrite = self.vname(x, curpath)
+                if overwrite:
+                    self.output(C.WARNING, '. ' + x + ' -> ' + newname + ' overwrite')
+                    shutil.copy2(x, newname)
+                else:
+                    self.output(C.OKGREEN, '. ' + x + ' -> ' + newname)
+                    shutil.copy2(x, newname)
 
 
 def argparse_and_cmd(args=sys.argv[1:]):
