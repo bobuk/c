@@ -1,15 +1,19 @@
 Common:
- ☐ Documentation
- ☐ Project page
- ✔ Rewrite UI for v_cmd's @done (12-09-26 23:23)
-   ✔ Add replace @done (12-09-26 23:23)
 
 Commands:
  ☐ Ctrl+X
  ☐ Aliases for commands
- ✔ Add ctrl/cmd replacement with os detection in ctrl+h @done (12-09-17 17:01)
 
 System:
  ☐ Check working on Win32
  ☐ Prepare setup.py
    ☐ Check installation on Win32 also
+
+
+＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+Archive:
+ ✔ Documentation @done (12-09-27 01:12)
+ ✔ Project page @done (12-09-27 01:12)
+ ✔ Rewrite UI for v_cmd's @done (12-09-26 23:23)
+ ✔ Add replace @done (12-09-26 23:23)
+ ✔ Add ctrl/cmd replacement with os detection in ctrl+h @done (12-09-17 17:01)
