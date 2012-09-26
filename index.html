@@ -1,36 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
   <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="C : Simple shell command to work with files in console. Copy-paste style like in Finder or Explorer." />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>C by bobuk</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>C</title>
   </head>
-
   <body>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/bobuk/c">View on GitHub</a>
+      <header>
+        <h1>C</h1>
+        <p>Simple shell command to work with files in console. Copy-paste style like in Finder or Explorer.</p>
+      </header>
 
-          <h1 id="project_title">C</h1>
-          <h2 id="project_tagline">Simple shell command to work with files in console. Copy-paste style like in Finder or Explorer.</h2>
+      <div id="banner">
+        <span id="logo"></span>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/bobuk/c/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/bobuk/c/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
+        <a href="https://github.com/bobuk/c" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/bobuk/c/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/bobuk/c/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
         <h3>Heaven for copy-pasters</h3>
 
 <p>I'm very happy with near everything in my favorite <code>zsh</code>. But I am worried every time when I need to copy a lot of different files from different parts of the disk.</p>
@@ -62,18 +70,37 @@ Copying to `/home/bobuk/backup'
 </code></pre>
 
 <p>Here <code>c c</code> is a analogue for <code>ctrl+c</code> and <code>c v</code> for <code>ctrl+v</code>. Looks like a crap? Yes. But with nifty aliases it's can be a much easier. You can use your favorite <code>ctrl+commands</code> as a shell commands.</p>
-      </section>
-    </div>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">C maintained by <a href="https://github.com/bobuk">bobuk</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+<pre><code>$ ls
+README.md   TODO.todo   c       install.sh
+$ cmd+c README.md install.sh 
++. README.md
++. install.sh
+$ mkdir release &amp;&amp; cd $_
+$ cmd+v
+Copying to `/Users/bobuk/V/c/release'
+. /Users/bobuk/V/c/README.md -&gt; /Users/bobuk/V/c/release/README.md
+. /Users/bobuk/V/c/install.sh -&gt; /Users/bobuk/V/c/release/install.sh
+$ ls -1
+README.md
+install.sh
+$ cmd+c
++D /Users/bobuk/V/c/release
+$ cd ..
+$ cmd+del
+Are you sure to remove 1 directories files (y/n)y
+move to trash /Users/bobuk/V/c/release
+Done
+</code></pre>
+
+<p>In this case I use <code>cmd+commands</code> because installation script recognize what it run on Darwin.</p>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/bobuk">bobuk</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></small></p>
       </footer>
     </div>
-
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
     
-
   </body>
 </html>
