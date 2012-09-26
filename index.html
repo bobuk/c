@@ -51,61 +51,61 @@
 
 <p><code>C</code> is a small Python3 script which trying to imitate <code>ctrl</code> or <code>cmd</code> key for files operation. How it works? It's simply like this:</p>
 
-<pre><code>$ cd /etc
-$ c c passwd
+<div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /etc
+<span class="nv">$ </span>c c passwd
 +. /etc/passwd
-$ c c sudoers sshd_config
+<span class="nv">$ </span>c c sudoers sshd_config
 +. /etc/sudoers
 +. /etc/sshd_config
-$ cd apache2 
-$ c c httpd.conf
+<span class="nv">$ </span><span class="nb">cd </span>apache2
+<span class="nv">$ </span>c c httpd.conf
 +. /private/etc/apache2/httpd.conf
-$ cd ~/backup
-$ c v
-Copying to `/home/bobuk/backup'
+<span class="nv">$ </span><span class="nb">cd</span> ~/backup
+<span class="nv">$ </span>c v
+Copying to <span class="sb">`</span>/home/bobuk/backup<span class="err">'</span>
 . /etc/sshd_config -&gt; backup/sshd_config
 . /etc/passwd -&gt; backup/passwd
 . /etc/apache2/httpd.conf -&gt; backup/httpd.conf
 . /etc/sudoers -&gt; backup/sudoers
-</code></pre>
+</pre></div>
 
 <p>Here <code>c c</code> is a analogue for <code>ctrl+c</code> and <code>c v</code> for <code>ctrl+v</code>. Looks like a crap? <strong>Yes!</strong> But with nifty aliases it's can be a much easier. You can use your favorite <code>ctrl+commands</code> as a shell commands.</p>
 
-<pre><code>$ ls
+<div class="highlight"><pre><span class="nv">$ </span>ls
 README.md   TODO.todo   c       install.sh
-$ cmd+c README.md install.sh 
+<span class="nv">$ </span>cmd+c README.md install.sh
 +. README.md
 +. install.sh
-$ mkdir release &amp;&amp; cd $_
-$ cmd+v
-Copying to `/Users/bobuk/V/c/release'
+<span class="nv">$ </span>mkdir release <span class="o">&amp;&amp;</span> <span class="nb">cd</span> <span class="nv">$_</span>
+<span class="nv">$ </span>cmd+v
+Copying to <span class="sb">`</span>/Users/bobuk/V/c/release<span class="err">'</span>
 . /Users/bobuk/V/c/README.md -&gt; /Users/bobuk/V/c/release/README.md
 . /Users/bobuk/V/c/install.sh -&gt; /Users/bobuk/V/c/release/install.sh
-$ ls -1
+<span class="nv">$ </span>ls -1
 README.md
 install.sh
-$ cmd+c
+<span class="nv">$ </span>cmd+c
 +D /Users/bobuk/V/c/release
-$ cd ..
-$ cmd+del
-Are you sure to remove 1 directories files (y/n)y
+<span class="nv">$ </span><span class="nb">cd</span> ..
+<span class="nv">$ </span>cmd+del
+Are you sure to remove 1 directories files <span class="o">(</span>y/n<span class="o">)</span>y
 move to trash /Users/bobuk/V/c/release
 Done
-</code></pre>
+</pre></div>
 
 <p>In this case I use <code>cmd+commands</code> because installation script recognize what it run on Darwin.</p>
 
 <h3>Commands</h3>
 
-<pre><code>$ cmd+h
+<div class="highlight"><pre><span class="nv">$ </span>cmd+h
 List of commands:
-    cmd+c mark files and directories for copying or moving
+    cmd+c mark files and directories <span class="k">for </span>copying or moving
     cmd+v copy files and other stuff to current directory
     cmd+del remove selected files to trash
     cmd+p show a list of marked files
     cmd+R reset list of selection
     cmd+h show list of commands
-</code></pre>
+</pre></div>
 
 <h3>Features</h3>
 
