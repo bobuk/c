@@ -69,7 +69,7 @@ Copying to `/home/bobuk/backup'
 . /etc/sudoers -&gt; backup/sudoers
 </code></pre>
 
-<p>Here <code>c c</code> is a analogue for <code>ctrl+c</code> and <code>c v</code> for <code>ctrl+v</code>. Looks like a crap? Yes. But with nifty aliases it's can be a much easier. You can use your favorite <code>ctrl+commands</code> as a shell commands.</p>
+<p>Here <code>c c</code> is a analogue for <code>ctrl+c</code> and <code>c v</code> for <code>ctrl+v</code>. Looks like a crap? <strong>Yes!</strong> But with nifty aliases it's can be a much easier. You can use your favorite <code>ctrl+commands</code> as a shell commands.</p>
 
 <pre><code>$ ls
 README.md   TODO.todo   c       install.sh
@@ -94,6 +94,42 @@ Done
 </code></pre>
 
 <p>In this case I use <code>cmd+commands</code> because installation script recognize what it run on Darwin.</p>
+
+<h3>Commands</h3>
+
+<pre><code>$ cmd+h
+List of commands:
+    cmd+c mark files and directories for copying or moving
+    cmd+v copy files and other stuff to current directory
+    cmd+del remove selected files to trash
+    cmd+p show a list of marked files
+    cmd+R reset list of selection
+    cmd+h show list of commands
+</code></pre>
+
+<h3>Features</h3>
+
+<p>This is a raw list of features. Must be reordered and completed.</p>
+
+<ul>
+<li>
+<code>cmd+c</code> command work as 'mark files' and take unlimited number of arguments.</li>
+<li>
+<code>cmd+c</code> with no arguments work as <code>cmd+c</code> with current directory argument.</li>
+<li>
+<code>-q</code> switch make all commands quiet.</li>
+<li>
+<code>-2</code> will stop commands from files list flushing. I.e. after <code>cmd+v</code> old files list still in buffer.</li>
+<li>
+<code>cmd+del</code> remove files into system trashcan if module <code>send2trash</code> is installed.</li>
+</ul><h3>Authors</h3>
+
+<p>Yes, it's me. All code and staff was writen by BoBuk.</p>
+
+<h3>Licence</h3>
+
+<p>It's absolutely freeware and public domain.
+But copying with bad intents prohibited by real patsans law</p>
       </section>
       <footer>
         <p>Project maintained by <a href="https://github.com/bobuk">bobuk</a></p>
