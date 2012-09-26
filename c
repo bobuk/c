@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+#
+# Copying with bad intents prohibited by real patsans law
 
 import sys
 import os
