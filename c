@@ -7,6 +7,7 @@ import os
 import json
 import itertools
 import shutil
+import platform
 
 commands = ['c', 'v', 'del', 'p', 'R', 'h', ]
 
@@ -20,13 +21,14 @@ class C:
     FAIL = '\033[91m'
     ENDC = '\033[0m'
 
-    def disable(self):
-        self.HEADER = ''
-        self.OKBLUE = ''
-        self.OKGREEN = ''
-        self.WARNING = ''
-        self.FAIL = ''
-        self.ENDC = ''
+    @classmethod
+    def disable(cls):
+        cls.HEADER = ''
+        cls.OKBLUE = ''
+        cls.OKGREEN = ''
+        cls.WARNING = ''
+        cls.FAIL = ''
+        cls.ENDC = ''
 
 
 class Storage:
@@ -291,6 +293,8 @@ def fetchname(name=sys.argv[0]):
 
 if __name__ == '__main__':
     try:
+        if platform.system().lower() == 'windows':
+            C.disable()
         name = fetchname()
         if name:
             cmd = argparse_and_cmd([name] + sys.argv[1:])
