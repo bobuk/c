@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#
+# 2012 (c) Grigory Bakunov <thebobuk@ya.ru>
 # Copying with bad intents prohibited by real patsans law
 
 import sys
