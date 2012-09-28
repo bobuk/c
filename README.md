@@ -89,5 +89,5 @@ Yes, it's me. All code and staff was writen by BoBuk.
 
 ### Licence
 
-It's absolutely freeware and public domain.
+It's absolutely [CC0 public domain](http://creativecommons.org/publicdomain/zero/1.0/).
 But copying with bad intents prohibited by real patsans law
