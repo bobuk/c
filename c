@@ -81,7 +81,11 @@ class normal_cmd:
 
     def with_args(self, args):
         if '-h' in args or '--help' in args:
-            self.output(C.N, 'Help: ' + self.__doc__)
+            cmd = self.__doc__
+            if sys.platform == 'darwin':
+                cmd = cmd.replace('{ctrl+', '{cmd+')
+            cmd = cmd.replace('{', C.OKGREEN).replace('}', C.ENDC)
+            self.output(C.N, 'Help: ' + cmd)
             sys.exit(-2)
         if '-q' in args or '--quiet' in args:
             self.quiet = True
