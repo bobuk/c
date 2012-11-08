@@ -284,7 +284,7 @@ class v_cmd(vx_cmd_proto):
 
 def argparse_and_cmd(args=sys.argv[1:]):
     if len(args) < 1:
-        raise Exception('First argument must be one of this: ' + ', '.join(commands))
+        raise Exception('First argument must be one of these: ' + ', '.join(commands))
     if args[0].startswith('-'):
         args[0] = args[0].lstrip('-')
     if args[0] in aliases:
