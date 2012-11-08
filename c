@@ -30,6 +30,12 @@ class C:
         cls.FAIL = ''
         cls.ENDC = ''
 
+    @classmethod
+    def oskey(cls, cmd, color = True):
+        if sys.platform == 'darwin':
+            cmd = cmd.replace('{ctrl+', '{cmd+')
+        return cmd.replace('{', C.OKGREEN if color else '`').replace('}', C.ENDC if color else "'")
+
 
 class Storage:
     def __init__(self, path=os.path.expanduser("~/.ctrl-buff")):
@@ -73,7 +79,7 @@ class normal_cmd:
             self.storage = Storage()
             self.storage.load()
             if self.NEEDFILES and not (self.storage.files or self.storage.dirs):
-                raise Exception("Please select some files or dirs with ctrl+c")
+                raise Exception("Please select some files or dirs with {ctrl+c}")
 
     def output(self, mode, string):
         if not self.quiet or (mode == C.FAIL):
@@ -81,11 +87,7 @@ class normal_cmd:
 
     def with_args(self, args):
         if '-h' in args or '--help' in args:
-            cmd = self.__doc__
-            if sys.platform == 'darwin':
-                cmd = cmd.replace('{ctrl+', '{cmd+')
-            cmd = cmd.replace('{', C.OKGREEN).replace('}', C.ENDC)
-            self.output(C.N, 'Help: ' + cmd)
+            self.output(C.N, 'Help: ' + C.oskey(self.__doc__))
             sys.exit(-2)
         if '-q' in args or '--quiet' in args:
             self.quiet = True
@@ -171,10 +173,7 @@ class h_cmd(normal_cmd):
     def do(self):
         self.output(C.HEADER, 'List of commands:')
         for cmd in self.cmdlist:
-            if sys.platform == 'darwin':
-                cmd = cmd.replace('{ctrl+', '{cmd+')
-            r = cmd.replace('{', C.OKGREEN).replace('}', C.ENDC)
-            self.output(C.N, '\t' + r)
+            self.output(C.N, '\t' + C.oskey(cmd))
 
 
 class p_cmd(normal_cmd):
@@ -307,5 +306,5 @@ if __name__ == '__main__':
         if cmd:
             cmd.doit()
     except Exception as e:
-        sys.stderr.write(C.FAIL + str(e) + C.ENDC + '\n')
+        sys.stderr.write(C.FAIL + C.oskey(str(e), color=False) + C.ENDC + '\n')
         sys.exit(-1)
