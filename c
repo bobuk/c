@@ -139,7 +139,7 @@ class normal_cmd:
 
 
 class del_cmd(normal_cmd):
-    """{ctrl+del} remove selected files to trash"""
+    """{ctrl+del} removes selected files to trash"""
     AUTOLOAD = True
     NEEDFILES = True
     AUTOSAVE = True
@@ -160,7 +160,7 @@ class del_cmd(normal_cmd):
 
 
 class R_cmd(normal_cmd):
-    """{ctrl+R} reset list of selection"""
+    """{ctrl+R} resets list of selection"""
     # We can't do just AUTOCLEAN/AUTOSAVE because I want to ignore -2 argument
     def process(self):
         self.storage = Storage()
@@ -170,7 +170,7 @@ class R_cmd(normal_cmd):
 
 
 class h_cmd(normal_cmd):
-    """{ctrl+h} show list of commands"""
+    """{ctrl+h} shows list of commands"""
 
     def process(self):
         self.cmdlist = [eval(x + '_cmd').__doc__ for x in commands]
@@ -182,7 +182,7 @@ class h_cmd(normal_cmd):
 
 
 class p_cmd(normal_cmd):
-    """{ctrl+p} show a list of marked files"""
+    """{ctrl+p} shows a list of marked files"""
     AUTOLOAD = True
 
     def do(self):
@@ -193,7 +193,7 @@ class p_cmd(normal_cmd):
 
 
 class c_cmd(normal_cmd):
-    """{ctrl+c} mark files and directories for copying or moving"""
+    """{ctrl+c} marks files and directories for copying or moving"""
     AUTOLOAD = True
     AUTOSAVE = True
 
@@ -253,7 +253,7 @@ class vx_cmd_proto(normal_cmd):
 
 
 class v_cmd(vx_cmd_proto):
-    """{ctrl+v} copy files and other stuff to current directory"""
+    """{ctrl+v} copies files and other stuff to current directory"""
 
     def process(self):
         if not self.args:
