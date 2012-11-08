@@ -9,7 +9,12 @@ import itertools
 import shutil
 import platform
 
-commands = ['c', 'v', 'del', 'p', 'R', 'h', ]
+commands = ['c', 'v', 'del', 'p', 'R', 'h']
+aliases  = {
+    'help': 'h',
+    'copy': 'c',
+    'paste': 'p',
+}
 
 
 class C:
@@ -280,6 +285,10 @@ class v_cmd(vx_cmd_proto):
 def argparse_and_cmd(args=sys.argv[1:]):
     if len(args) < 1:
         raise Exception('First argument must be one of this: ' + ', '.join(commands))
+    if args[0].startswith('-'):
+        args[0] = args[0].lstrip('-')
+    if args[0] in aliases:
+        args[0] = aliases[args[0]]
     cmd = eval(args[0] + '_cmd()')
     cmd.with_args(args[1:])
     cmd.process()
