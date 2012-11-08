@@ -9,6 +9,6 @@ else
 CTRL="ctrl"
 fi
 for x in '' '+c' '+v' '+R' '+del' '+h'; do
-    ln -s c $CTRL$x
+    ln -fs c $CTRL$x
 done
 popd >/dev/null
