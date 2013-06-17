@@ -27,6 +27,14 @@ class C:
     ENDC = '\033[0m'
 
     @classmethod
+    def via_colorama(cls):
+        cls.HEADER = '\033[35;40;1m'
+        cls.OKBLUE = '\033[36;40;1m'
+        cls.OKGREEN = '\033[32;40;1m'
+        cls.WARNING = '\033[33;40;1m'
+        cls.FAIL = '\033[31;40;1m'
+
+    @classmethod
     def disable(cls):
         cls.HEADER = ''
         cls.OKBLUE = ''
@@ -306,7 +314,13 @@ def fetchname(name=sys.argv[0]):
 if __name__ == '__main__':
     try:
         if platform.system().lower() == 'windows':
-            C.disable()
+            try:
+                from colorama import init
+                init()
+                C.via_colorama()
+            except:
+                C.disable()
+                print('You probably would love to run command \'easy_install colorama\' at first ;)')
         name = fetchname()
         if name:
             cmd = argparse_and_cmd([name] + sys.argv[1:])
